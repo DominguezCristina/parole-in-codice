@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lan="it">
+<head>
+	<title>Codice</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="CSS/style.css">
+
+</head>
+<body>
+
+	<div class="flex griglia">
+		<h1 class="colonna_3">Parole in codice</h1>
+		<p class="colonna_3 paragrafobase">
+		Questo codice è stato realizzato principalmente in base al sistema del codice binario, sono state apportate delle modifiche per evitare delle ridondanze di forme non necessarie e per stabilire delle regole nella decodifica del codice.
+		</p>
+		<p class="colonna_3 paragrafobase">
+		Lo scopo di questa pagina web è quella di permettere all'utente di poter generare delle parole in codice, per avere la possibilità di scambiare dei dialoghi segreti con qualcuno.
+		</p>
+	</div>
+
+
+
+	<input type="text"></input>
+
+	<div class="box">
+		</div>
+
+
+
+	<div class="flex">
+		<h2 class="colonna_4">Atlante tecnologico<br>Parole in codice<br>Simboli</h2>
+		<h2 class="colonna_4">CV2<br>Cristina Dominguez Alves<br>Shaya Pedrazzi</h2>
+		<h2 class="colonna_4">Interaction Design<br>Andreas Gysin<br>Giovanni Profeta</h2>
+		<div><a id="nav" class="border_radius" href="#Indice">Indice</a></div>
+	</div>
+	
+
+
+	<script type="text/javascript">
+		maxChar = 1000;
+		previous_word = ""
+
+		const input = document.querySelector('input')
+		input.maxLength= maxChar
+
+		const output = document.querySelector('.box')
+
+		function replace_img(index , newChar){
+			if (index < maxChar && index >= 0){
+				let img = output.childNodes[index]		
+				if (newChar == ".") {  // Create new img element
+					img.src = 'png/punto.png';
+				}else {
+					img.src = 'png/' + newChar + '.png';
+				}
+			}
+		} 
+
+		// Crea i primi caratteri di tipo spazio , il numero di caratteri lo legge da maxChar
+		function populate()	{
+			output.innerHTML = ''
+
+			for (let i=0; i<maxChar; i++) {
+				let img = new Image();
+				img.src = 'png/ .png';
+				output.appendChild(img)
+			}
+
+		} 
+		// let output = document.getElementsByClassName(".img");
+
+		input.oninput = function(){
+			let word = input.value.toLowerCase()
+
+			let current_length = ((word.length < previous_word.length) ? previous_word.length : word.length);
+
+			for (let i=0; i<current_length; i++) {
+				if (i < word.length){
+					if (word[i] != previous_word[i]){
+						replace_img(i , word[i])
+					}
+				}
+				else{
+					replace_img(i , " ")
+				}
+			}
+
+			previous_word = word
+		}
+
+
+		populate()
+
+	</script>
+
+
+
+
+</body>
+</html>
