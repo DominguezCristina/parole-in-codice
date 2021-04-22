@@ -38,7 +38,7 @@
 
 
 	<script type="text/javascript">
-		maxChar = 1000;
+		maxChar = 1001;
 		previous_word = ""
 
 		const input = document.querySelector('input')
@@ -49,8 +49,10 @@
 		function replace_img(index , newChar){
 			if (index < maxChar && index >= 0){
 				let img = output.childNodes[index]		
-				if (newChar == ".") {  // Create new img element
+				if (newChar == ".")  {  // Create new img element
 					img.src = 'png/punto.png';
+				}else if (newChar == "?") {  // Create new img element
+					img.src = 'png/domanda.png';
 				}else {
 					img.src = 'png/' + newChar + '.png';
 				}
