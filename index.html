@@ -5,98 +5,423 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="CSS/style.css">
+	<link href='https://fonts.googleapis.com/css?family=Space Grotesk' rel='stylesheet'>
 
 </head>
 <body>
 
 	<div class="flex griglia">
-		<h1 class="colonna_3">Parole in codice</h1>
-		<p class="colonna_3 paragrafobase">
-		Questo codice è stato realizzato principalmente in base al sistema del codice binario, sono state apportate delle modifiche per evitare delle ridondanze di forme non necessarie e per stabilire delle regole nella decodifica del codice.
-		</p>
-		<p class="colonna_3 paragrafobase">
-		Lo scopo di questa pagina web è quella di permettere all'utente di poter generare delle parole in codice, per avere la possibilità di scambiare dei dialoghi segreti con qualcuno.
-		</p>
+		<h1 class="span_4">Parole in codice</h1>	
+		<div class="span_2">
+			<button id="0" class="dictionary_button" type="button" onclick="set_option(this.id)">◐◑◒◓</button>
+		</div>
+		<div class="span_2">
+			<button id="1" class="dictionary_button" type="button" onclick="set_option(this.id)">◣◤◢◥</button>
+		</div>
+		<div class="span_2">
+			<button id="2" class="dictionary_button" type="button" onclick="set_option(this.id)">◡◚◛◠</button>
+		</div>
+		<div class="span_2">
+			<button id="3" class="dictionary_button" type="button" onclick="set_option(this.id)">◜◟◝◞</button>
+		</div>
+	</div>
+		<div class="flex griglia">
+			<div class="span_4"></div>
+			<p class="span_4 paragrafobase">
+			Lo scopo di questa pagina web è quella di permettere all'utente di poter generare delle parole in codice, per avere la possibilità di scambiare dei dialoghi segreti con qualcuno.
+			</p>
+			<p class="span_4 paragrafobase">
+			Per la codifica	bisogna selezionare il dizionario con la quale si vuole comunicare attraverso i pulsanti con i rispettivi simboli,	in alternativa si può inserire un proprio dizionario dai 4 ai 10 caratteri tutti diversi tra loro.
+			In seguito bisogna comporre una password a scelta per poi poter inserire il messaggio che si vuole trasmettere. Infine si copia il messaggio in codice ottenuto per poi inviarlo al destinatario.<br>
+			Mentre per la decodifica, bisogna incollare il messaggio in codice nel box del testo di decodifica, inserendo la respettiva password  per decifare il messaggio.
+			</p>
+		</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+	<div class="flex griglia">
+	
+	</div>
+<br>
+	<div class="flex griglia">
+		<div class="span_2">
+			<h3 >Dizionario<br>(min 4 caratteri)</h3>
+			<input class="dictionary" type="input"></input>
+		</div>
+		<div class="span_2">
+			<h3 >Password<br>per la codifica</h3>
+			<input class="seed_cod" type="input"></input>
+		</div>
+		<div class="span_8">
+			<h3 >Testo<br>da codificare</h3>
+			<input class="text_cod" type="input"></input>
+		</div>	
 	</div>
 
+	<div class="box box_cod"></div>
 
 
-	<input type="text"></input>
-
-	<div class="box">
+	<div class="flex griglia">
+		<div class="span_2">
+			<h3></h3>
 		</div>
+		<div class="span_2">
+			<h3>Password<br>per la decodifica</h3>
+			<input class="seed_dec" type="input"></input>
+		</div>
+		<div class="span_8">
+			<h3>Testo<br>da decodificare</h3>
+			<input class="text_dec" type="input"></input>
+		</div>		
+	</div>
 
-
+	<div class="box box_dec"></div>
+	
 
 	<div class="flex">
-		<h2 class="colonna_4">Atlante tecnologico<br>Parole in codice<br>Simboli</h2>
+		<h2 class="colonna_4">Progetto<br>Parole in codice<br>Simboli</h2>
 		<h2 class="colonna_4">CV2<br>Cristina Dominguez Alves<br>Shaya Pedrazzi</h2>
 		<h2 class="colonna_4">Interaction Design<br>Andreas Gysin<br>Giovanni Profeta</h2>
 		<div><a id="nav" class="border_radius" href="#Indice">Indice</a></div>
 	</div>
-	
 
 
-	<script type="text/javascript">
-		maxChar = 1001;
-		previous_word = ""
+<script type="text/javascript">
+	maxChar = 150;
+	maxSeed = 10;
+	maxDict = 10;
 
-		const input = document.querySelector('input')
-		input.maxLength= maxChar
+	let all_dict = {
+		0 : "◐◑◒◓",
+		1 : "◤◣◥◢",
+		2 : "◡◚◛◠",
+		3 : "◜◟◝◞"
+	}
 
-		const output = document.querySelector('.box')
+	let dict_Base = all_dict[0]
 
-		function replace_img(index , newChar){
-			if (index < maxChar && index >= 0){
-				let img = output.childNodes[index]		
-				if (newChar == ".")  {  // Create new img element
-					img.src = 'png/punto.png';
-				}else if (newChar == "?") {  // Create new img element
-					img.src = 'png/domanda.png';
-				}else {
-					img.src = 'png/' + newChar + '.png';
-				}
+
+	const dictionary = document.querySelector('.dictionary')
+	dictionary.value = dict_Base
+
+	const text_cod = document.querySelector('.text_cod')
+	const seed_cod = document.querySelector('.seed_cod')
+
+	const text_dec = document.querySelector('.text_dec')
+	const seed_dec = document.querySelector('.seed_dec')
+
+	const box_cod = document.querySelector('.box_cod')
+	const box_dec = document.querySelector('.box_dec')
+
+
+
+	//set max char
+	text_cod.maxLength= maxChar
+
+	seed_cod.maxLength= maxSeed
+	seed_dec.maxLength= maxSeed
+
+	dictionary.maxLength = maxDict
+
+	function removeNoise( str){
+		let denoise = ""
+		for (let i=0; i<str.length; i++){
+			if (str[i] == "0" || str[i] == "1" ){
+				denoise += str[i]
 			}
-		} 
+		}
 
-		// Crea i primi caratteri di tipo spazio , il numero di caratteri lo legge da maxChar
-		function populate()	{
-			output.innerHTML = ''
+		return denoise
+	}
 
-			for (let i=0; i<maxChar; i++) {
-				let img = new Image();
-				img.src = 'png/ .png';
-				output.appendChild(img)
+	function deobfuscate(bin){
+
+		let deobfuscated = ""
+		for (let i=0; i<bin.length; i++){
+			if (bin[i] == dict[0]){
+				deobfuscated += "0"
+
+			}else if (bin[i] == dict[1]){
+				deobfuscated += "1"
+
+			}else{
+				deobfuscated += "x"
 			}
-
-		} 
-		// let output = document.getElementsByClassName(".img");
-
-		input.oninput = function(){
-			let word = input.value.toLowerCase()
-
-			let current_length = ((word.length < previous_word.length) ? previous_word.length : word.length);
-
-			for (let i=0; i<current_length; i++) {
-				if (i < word.length){
-					if (word[i] != previous_word[i]){
-						replace_img(i , word[i])
-					}
-				}
-				else{
-					replace_img(i , " ")
-				}
-			}
-
-			previous_word = word
 		}
 
 
-		populate()
+		return deobfuscated
+	}
+
+	function addNoise( str){
+		let noise = ""
+		for (let i=0; i<str.length; i++){
+			noise += str[i]
+			if (Math.floor(Math.random() * 2)%2 == 0){
+				noise += "x"
+			}
+		}
+
+		return noise
+	}
+
+	function obfuscate(bin){
+
+		let obfuscated = ""
+		for (let i=0; i<bin.length; i++){
+			if (bin[i] == "0"){
+				obfuscated += dict[0]
+
+			}else if (bin[i] == "1"){
+				obfuscated += dict[1]
+
+			}else{
+				
+				obfuscated += dict[ 2 +Math.floor(Math.random() * (dict.length-3))]
+			}
+		}
+
+
+		return obfuscated
+	}
+
+
+
+	function dec2bin(dec){
+	  return (dec >>> 0).toString(2);
+	}
+
+	function charReplace(word , a , b){
+		if(a > word.length-1 || b > word.length-1 || a < 0 || b <0 || a ==b ) return word
+
+
+	 	let bucket = word.substring(0,a) + word[b] + word.substring(a+1)
+	 	return bucket.substring(0,b) + word[a] + bucket.substring(b+1)
+	}
+
+
+
+	//sequential random
+	function xmur3(str) {
+	    for(var i = 0, h = 1779033703 ^ str.length; i < str.length; i++)
+	        h = Math.imul(h ^ str.charCodeAt(i), 3432918353),
+	        h = h << 13 | h >>> 19;
+	    return function() {
+	        h = Math.imul(h ^ h >>> 16, 2246822507);
+	        h = Math.imul(h ^ h >>> 13, 3266489909);
+	        return (h ^= h >>> 16) >>> 0;
+	    }
+	}
+
+	function mulberry32(a) {
+	    return function() {
+	      var t = a += 0x6D2B79F5;
+	      t = Math.imul(t ^ t >>> 15, t | 1);
+	      t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+	      return ((t ^ t >>> 14) >>> 0);
+	    }
+	}
+
+	function scrambler(seedWord , word)	{
+		var seedRandom = xmur3(seedWord);
+		var rand = mulberry32(seedRandom())
+		
+		//scramble word
+		for (let i=0; i<word.length; i++) {
+			word = charReplace(word , i , rand() %word.length)
+
+		}
+
+		return word
+
+	} 
+
+	function descrambler(seedWord , word){
+		var seedRandom = xmur3(seedWord);
+		var rand = mulberry32(seedRandom())
+
+		let rands =[]
+		for (let i=0; i<word.length; i++) { 
+			rands.push(rand())
+		}
+
+		//descramble word
+		for (let i=word.length; i>=0; i--) {
+			word = charReplace(word , i , rands[i] %word.length)
+		
+		}
+
+		return word
+	} 
+
+
+
+
+
+	function run_encoding(){
+
+
+		let word = text_cod.value.toLowerCase()
+
+
+		let seed = seed_cod.value.toLowerCase()
+
+
+		if (seed=="" || word=="" || dict_Base.length < 4 ){
+			box_cod.innerHTML = ""
+		}
+		else{
+
+			//generate unique dict for current seed
+			dict = scrambler(seed , dict_Base)
+
+			let scrambled = scrambler(seed , word)
+
+			console.log(scrambled)
+
+			let obfuscated =""
+
+			for (let i=0; i<scrambled.length; i++) {
+
+				obfuscated += obfuscate(addNoise(dec2bin(scrambled[i].charCodeAt(0))))
+
+				//char end
+				if (i != scrambled.length-1){
+					obfuscated += dict[dict.length-1]
+				}
+			}
+
+			box_cod.innerHTML = obfuscated
+		}
+
+
+	}
+
+	function run_dencoding(){
+
+
+		let obfuscated = text_dec.value.toLowerCase()
+
+
+		let seed = seed_dec.value.toLowerCase()
+
+		if (seed=="" || obfuscated=="" || dict_Base.length < 4 ){
+			box_dec.innerHTML = ""
+		}
+		else{
+			let word = ""
+
+			//generate unique dict for current seed
+			dict = scrambler(seed , dict_Base)
+	
+
+
+			
+
+			let obf_char = ""
+			for (let i=0; i<obfuscated.length; i++) {
+				//check for char end
+				if (obfuscated[i] == dict[dict.length-1] || i == obfuscated.length-1){
+					if (i == obfuscated.length-1){
+						obf_char += obfuscated[i]
+					}
+					let deobfuscated = deobfuscate(obf_char)
+
+					let denoised_binary = removeNoise(deobfuscated)
+
+
+					word+=  String.fromCharCode(parseInt(denoised_binary, 2))
+
+					obf_char = ""
+				}
+				else{
+					obf_char += obfuscated[i]
+				}
+			}
+
+			box_dec.innerHTML = descrambler(seed , word)
+		}
+
+
+	}
+
+	text_cod.oninput = function(){
+		if (seed_cod.value.toLowerCase()!=""){
+			run_encoding()
+		}
+
+	}
+
+	seed_cod.oninput = function(){
+		if (text_cod.value.toLowerCase()!=""){
+			run_encoding()
+		}
+
+	}
+
+	text_dec.oninput = function(){
+		if (seed_dec.value.toLowerCase()!=""){
+			run_dencoding()
+		}
+	
+
+	}
+
+	seed_dec.oninput = function(){
+		if (text_dec.value.toLowerCase()!=""){
+			run_dencoding()
+		}
+
+
+	}
+
+
+
+	function set_option(clicked_id){
+
+		dict_Base = all_dict[clicked_id]
+		dictionary.value = dict_Base
+
+		updateDict()
+
+	}
+
+	function updateDict(){
+		dict_Base = dictionary.value.toLowerCase()
+
+		for (let i=0; i<dict_Base.length; i++) {
+			for (let k=0; k<dict_Base.length; k++) {
+				if (k != i){
+
+					if (dict_Base[k] == dict_Base[i]){
+						alert("Tutti i caratteri del dizionario devono essere univoci")
+						dict_Base = dict_Base.replace(dict_Base[k], '');
+						dictionary.value = dict_Base
+						i = dict_Base.length
+						break
+					}
+				}
+			}
+		}
+
+
+
+		if (dict_Base.length > 3){
+			run_dencoding()
+			run_encoding()
+		}
+
+	}
+
+	dictionary.oninput = function(){
+		updateDict()
+		
+	}
 
 	</script>
-
-
 
 
 </body>
