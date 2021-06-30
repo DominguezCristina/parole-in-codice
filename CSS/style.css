@@ -2,13 +2,15 @@ body {
 	margin: 36px;
 	background:black;
 	color:white;
+	cursor:none;
+
 }
 
 
 h1	{
 	font-size:250%;
-	font-family:Space Grotesk;
-	font-weight:300;
+	font-family:Aileron;
+	font-weight:500;
 	display:block;
 	margin:0;
 	line-height:1.1;
@@ -16,8 +18,8 @@ h1	{
 
 h2	{
 	font-size:100%;
-	font-family:Space Grotesk;
-	font-weight:300;
+	font-family:Aileron;
+	font-weight:500;
 	display:block;
 	margin:36px 0 0 0;
 	line-height:1.1;
@@ -25,19 +27,32 @@ h2	{
 
 h3	{
 	font-size:100%;
-	font-family:Space Grotesk;
-	font-weight:300;
+	font-family:Aileron;
+	font-weight:500;
 	display:block;
 	margin:36px 0 16px 0;
 	line-height:1.1;
 }
 
+
+.cursor {
+	position: fixed;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: white;
+	transition: 0s;
+	transform: translate(-50%,-50%);
+	pointer-events: none;
+	mix-blend-mode: difference;
+
+}
+
 .paragrafointro {
 	font-size:120%;
-	font-family:Space Grotesk;
-	font-weight:300;
+	font-family:Aileron;
+	font-weight:500;
 	display:block;
-	text-align:justify;
 	line-height:1.1;
 	text-justify:inter-word;
 
@@ -45,18 +60,17 @@ h3	{
 
 .paragrafobase	{
 	font-size:100%;
-	font-family:Space Grotesk;
-	font-weight:300;
+	font-family:Aileron;
+	font-weight:500;
 	display:block;
-	text-align:justify;
 	line-height:1.1;
 	text-justify:inter-word;
 }
 
 /*NAV*/
 #nav:hover {
-	background-color:black;
-	color:white;
+	background-color:white;
+	color:black;
 
 
 }
@@ -64,7 +78,7 @@ h3	{
 .border_radius	{
 	border-radius:26px;
 	width:85px;
-	height:30px; 
+	height:34px; 
 	background-color:white;	
 }
 
@@ -75,16 +89,16 @@ h3	{
 
 #nav	{
 	float:right;
-	color:black;
+	color:white;
 	text-decoration:none;
-	color:black;
+	background-color:black;
 	border:1px solid white;
-	padding-top:2px;  
+	padding-top:5px;  
 	font-size:150%;
-	font-family:Space Grotesk;
-	font-weight:300;
+	font-family:Aileron;
+	font-weight:500;
 	text-align:center;
-	margin:55px 0 0 0;
+	margin:50px 0 0 0;
 	line-height:1.1;
 }
 
@@ -101,18 +115,29 @@ h3	{
 	background-color:black;
 	color:white;
 	border-radius:26px;
+	border:1px solid black;
+	margin-top:87px;
+	height:36px;
+	opacity:100%;
 }
 
 .dictionary_button{
 	display: block;
-	width:100%;
-	height:30px;
+	width:50px;
+	height:36px;
 	min-height:20px;
-	font-size:20px;
+	font-size:150%;
 	border-radius:26px;
-	border: 1px solid white;
+	border:1px solid black;
+	background-color:black;
+	color:white;
 	cursor:pointer;
-	margin-top:8px;
+	margin-top:87px;
+	opacity: 100%;
+}
+
+.span_1 {
+	grid-column: span 1;
 }
 
 .span_2	{
@@ -127,6 +152,12 @@ grid-column: span 4;
 .span_5 {
 grid-column: span 5;
 }
+.span_6 {
+grid-column: span 6;
+}
+.span_7 {
+grid-column: span 7;
+}
 .span_8	{
 	grid-column: span 8;
 }
@@ -138,18 +169,19 @@ grid-column: span 5;
 	display:block;
 	width:auto;
 	min-height:5em;
-	font-family:Space Grotesk;
-	font-size:40px;
+	font-family:Aileron;
+	font-size:50px;
 	line-height:1;
 	overflow-wrap:break-word;
 }
 
 input {
-	margin: 0 0 36px 0;
+	margin: 0 0 5px 0;
 	width:100%;
 	height:36px;
 	background:white;	
 	border-radius:26px;
-	padding: 0 5px 0 5px;
+	padding: 0 0 0 0;
+	border:1px solid white;
 }
 

@@ -10,87 +10,77 @@
 </head>
 <body>
 
+
 	<div class="flex griglia">
-		<h1 class="span_4">Parole in codice</h1>	
-		<div class="span_2">
-			<button id="0" class="dictionary_button" type="button" onclick="set_option(this.id)">◐◑◒◓</button>
-		</div>
-		<div class="span_2">
-			<button id="1" class="dictionary_button" type="button" onclick="set_option(this.id)">◣◤◢◥</button>
-		</div>
-		<div class="span_2">
-			<button id="2" class="dictionary_button" type="button" onclick="set_option(this.id)">◡◚◛◠</button>
-		</div>
-		<div class="span_2">
-			<button id="3" class="dictionary_button" type="button" onclick="set_option(this.id)">◜◟◝◞</button>
-		</div>
-	</div>
-		<div class="flex griglia">
-			<div class="span_4"></div>
-			<p class="span_4 paragrafointro">
-			Lo scopo di questa pagina web è quella di permettere all'utente di poter generare delle frasi in codice, per avere la possibilità di scambiare dei dialoghi segreti con qualcuno. 
+		<h1 class="span_3">Parole<br>in codice</h1>	
+			<p class="span_3 paragrafobase">
+			Lo scopo di questa pagina web è quello di permettere all’utente di trasformare un messaggio segreto in un codice, così da poterlo inviare ad un destinatario. In questa interfaccia è anche presente una sezione per la decodifica di messaggi codificati, che avviene solo tramite una chiave di lettura. 
 			</p>
-			<p class="span_4 paragrafobase">
-			Per la codifica	bisogna selezionare il dizionario con la quale si vuole comunicare attraverso i pulsanti con i rispettivi simboli,	in alternativa si può inserire un proprio dizionario dai 4 ai 10 caratteri tutti diversi tra loro.
-			In seguito bisogna comporre una password a scelta per poi poter inserire il messaggio che si vuole trasmettere. Infine si copia il messaggio in codice ottenuto per poi inviarlo al destinatario.<br>
+			<p class="span_3 paragrafobase">
+			Per la codifica	bisogna selezionare il dizionario con la quale si vuole comunicare attraverso i pulsanti con i rispettivi simboli,	in alternativa si può inserire un proprio dizionario dai 4 ai 10 caratteri tutti diversi tra loro. In seguito bisogna comporre una password a scelta per poi poter inserire il messaggio che si vuole trasmettere.
+			</p>
+			<p class="span_3 paragrafobase">
+			Infine si copia il messaggio in codice ottenuto per poi inviarlo al destinatario.
 			Mentre per la decodifica, bisogna incollare il messaggio in codice nel box del testo di decodifica, inserendo la respettiva password e selezionando il dizionario corrispondente per decifare il messaggio.
 			</p>
 		</div>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-	<div class="flex griglia">
-	
-	</div>
-<br>
 	<div class="flex griglia">
 		<div class="span_2">
-			<h3 >Dizionario<br>(min 4 caratteri)</h3>
+			<h3>Dizionario<br>(min 4 caratteri)</h3>
 			<input class="dictionary" type="input"></input>
 		</div>
+			<button id="0" class="dictionary_button span_1" type="button" onclick="set_option(this.id)">◐</button>
+			<button id="1" class="dictionary_button span_1" type="button" onclick="set_option(this.id)">◣</button>
+			<button id="2" class="dictionary_button span_1" type="button" onclick="set_option(this.id)">◡◚</button>
+			<button id="3" class="dictionary_button span_1" type="button" onclick="set_option(this.id)">◜◟</button>
+		<div class="span_6"></div>	
 		<div class="span_2">
-			<h3 >Password<br>per la codifica</h3>
+			<h3>Password<br>per la codifica</h3>
 			<input class="seed_cod" type="input"></input>
 		</div>
-		<div class="span_8">
-			<h3 >Testo<br>da codificare</h3>
+		<div class="span_4">
+			<h3>Testo<br>da codificare</h3>
 			<input class="text_cod" type="input"></input>
-		</div>	
-	</div>
-
-	<div class="box box_cod"></div>
-
-
-	<div class="flex griglia">
-		<div class="span_2">
-			<h3></h3>
-		</div>
+			</div>
 		<div class="span_2">
 			<h3>Password<br>per la decodifica</h3>
 			<input class="seed_dec" type="input"></input>
 		</div>
-		<div class="span_8">
+		<div class="span_4">
 			<h3>Testo<br>da decodificare</h3>
 			<input class="text_dec" type="input"></input>
-		</div>		
+		</div>	
+			<div class="box box_cod span_6"></div>
+			<div class="box box_dec span_6"></div>
+		</div>	
 	</div>
-
-	<div class="box box_dec"></div>
-	
-
-	<div class="flex">
-		<h2 class="colonna_4">Progetto<br>Parole in codice<br>Simboli</h2>
-		<h2 class="colonna_4">CV2<br>Cristina Dominguez Alves<br>Shaya Pedrazzi</h2>
-		<h2 class="colonna_4">Interaction Design<br>Andreas Gysin<br>Giovanni Profeta</h2>
+<br>
+<br>
+<br>
+	<div class="flex griglia">
 		<div><a id="nav" class="border_radius" href="#Indice">Indice</a></div>
+		<h2 class="span_2"></h2>
+		<h2 class="span_2">Progetto<br>Parole in codice<br>Simboli</h2>
+		<h2 class="span_1"></h2>
+		<h2 class="span_2">CV2<br>Cristina Dominguez Alves<br>Shaya Pedrazzi</h2>
+		<h2 class="span_1"></h2>
+		<h2 class="span_2">Interaction Design<br>Andreas Gysin<br>Giovanni Profeta</h2>
+		
+		
 	</div>
+
+	<div class="cursor"></div>
 
 
 <script type="text/javascript">
-	maxChar = 150;
+	const cursor = document.querySelector('.cursor');
+	document.addEventListener ('mousemove',(e) => {
+		cursor.style.left = e.clientX + 'px';
+		cursor.style.top = e.clientY + 'px';
+	})
+
+	maxChar = 600;
 	maxSeed = 10;
 	maxDict = 10;
 
