@@ -14,7 +14,7 @@
 	<div class="flex griglia">
 		<h1 class="span_3">Parole<br>in codice</h1>	
 			<p class="span_3 paragrafobase">
-			Lo scopo di questa pagina web è quello di permettere all’utente di trasformare un messaggio segreto in codice, così da poterlo inviare ad un destinatario. In questa interfaccia è anche presente una sezione per la decodifica di messaggi codificati, che avviene solo tramite una chiave di lettura. 
+			Lo scopo di questa pagina web è quello di permettere all’utente di trasformare un messaggio segreto in un codice, così da poterlo inviare ad un destinatario. In questa interfaccia è anche presente una sezione per la decodifica di messaggi codificati, che avviene solo tramite una chiave di lettura. 
 			</p>
 			<p class="span_3 paragrafobase">
 			Per la codifica	bisogna selezionare il dizionario con la quale si vuole comunicare attraverso i pulsanti con i rispettivi simboli,	in alternativa si può inserire un proprio dizionario dai 4 ai 10 caratteri tutti diversi tra loro. In seguito bisogna comporre una password a scelta per poi poter inserire il messaggio che si vuole trasmettere.
@@ -26,7 +26,7 @@
 		</div>
 <br>
 	<div class="flex griglia">
-		<div class="span_2">
+		<div class="span_3">
 			<h3>Dizionario<br>(min 4 caratteri)</h3>
 			<input class="dictionary" type="input"></input>
 		</div>
@@ -34,25 +34,29 @@
 			<button id="1" class="dictionary_button span_1" type="button" onclick="set_option(this.id)">◣</button>
 			<button id="2" class="dictionary_button span_1" type="button" onclick="set_option(this.id)">◡◚</button>
 			<button id="3" class="dictionary_button span_1" type="button" onclick="set_option(this.id)">◜◟</button>
-		<div class="span_6"></div>	
-		<div class="span_2">
+			<button id="4" class="dictionary_button span_1" type="button" onclick="set_option(this.id)">▆▄</button>
+			<button id="5" class="dictionary_button span_1" type="button" onclick="set_option(this.id)">⠵』</button>
+
+			
+		<div class="span_3"></div>	
+		<div class="span_3">
 			<h3>Password<br>per la codifica</h3>
 			<input class="seed_cod" type="input"></input>
 		</div>
-		<div class="span_4">
+		<div class="span_9">
 			<h3>Testo<br>da codificare</h3>
 			<input class="text_cod" type="input"></input>
 			</div>
-		<div class="span_2">
+			<div class="box box_cod span_12"></div>
+		<div class="span_3">
 			<h3>Password<br>per la decodifica</h3>
 			<input class="seed_dec" type="input"></input>
 		</div>
-		<div class="span_4">
+		<div class="span_9">
 			<h3>Testo<br>da decodificare</h3>
 			<input class="text_dec" type="input"></input>
 		</div>	
-			<div class="box box_cod span_6"></div>
-			<div class="box box_dec span_6"></div>
+			<div class="box box_dec span_12"></div>
 		</div>	
 	</div>
 <br>
@@ -88,7 +92,9 @@
 		0 : "◐◑◒◓",
 		1 : "◤◣◥◢",
 		2 : "◡◚◛◠",
-		3 : "◜◟◝◞"
+		3 : "◜◟◝◞",
+		4 : "▆▄▂█▇",
+		5 : "⠸⠵⠳⠼⠴﹃『』﹄◙"
 	}
 
 	let dict_Base = all_dict[0]
