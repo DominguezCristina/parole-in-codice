@@ -191,3 +191,23 @@ input {
 	border:1px solid white;
 }
 
+@font-face {
+    font-family: 'Aileron';
+    src: url('Aileron-Regular.woff2') format('woff2'),
+        url('Aileron-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Aileron';
+    src: url('Aileron-Light.woff2') format('woff2'),
+        url('Aileron-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
